@@ -2,23 +2,19 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../firebase-config";
 
 export const Register = () => {
+  
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  // });
 
   const [user, setUser] = useState({})
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    console.log(email)
-  }, [email])
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
 
   // const register = ()
   return (
@@ -35,17 +31,13 @@ export const Register = () => {
               <div className="form-group row">
                 <label className="text-md-right">Email</label>
                 <div className="py-2">
-                  <input onChange={(e) => {
-                    setEmail(e.target.value)
-                  }} className="mb-2 -mt-12 w-full border-2 rounded py-1" value={email} type={'email'} />
+                  <input onChange={e => setEmail(e.target.value)} className="mb-2 -mt-12 w-full border-2 rounded py-1" type={'email'} />
                 </div>
               </div>
               <div className="form-group row">
                 <label className="text-md-right">Senha</label>
                 <div className="py-2">
-                  <input onChange={(e) => {
-                    setPassword(e.target.value)
-                  }} className="mb-2 -mt-12 w-full border-2 rounded py-1" value={password} type={'password'} />
+                  <input onChange={e => setPassword(e.target.value)} className="mb-2 -mt-12 w-full border-2 rounded py-1" type={'password'} />
                 </div>
               </div>
               <div className="form-group row mb-0">
